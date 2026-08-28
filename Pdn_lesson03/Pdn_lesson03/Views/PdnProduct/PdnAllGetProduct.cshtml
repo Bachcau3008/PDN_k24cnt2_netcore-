@@ -1,0 +1,44 @@
+﻿@{
+	ViewData["Title"] = "Danh sách sản phẩm";
+
+	var product = ViewData["Products"] as List<Pdn_lesson03.Models.PdnProduct>;
+}
+<div class="card">
+	<div class="card-header">
+		<h1>@ViewData["Title"] </h1>	
+	</div> 
+	<div class="card-body">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Year</th>
+					<th>Price</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in product)
+				{
+					<tr>
+						<td>@item.PdnProductId</td>
+						<td>@item.PdnProductName</td>
+						<td>@item.PdnYearRelease</td>
+						<td>@item.PdnPrice</td>
+						<td>
+							<a href="#" class="btn btn-info" > Xem chi tiết </a>
+							<a href="#" class="btn btn-warning" > Sửa Chữa  </a>
+							<a href="#" class="btn btn-danger" > Xóa </a>
+						</td>
+					</tr>
+				}
+			</tbody>
+			<tfoot>
+				<tr>
+					<th colspan="5">Tổng số sản phẩm: @product.Count</th>
+				</tr>
+			</tfoot>	
+		</table>
+	</div>	
+</div>
