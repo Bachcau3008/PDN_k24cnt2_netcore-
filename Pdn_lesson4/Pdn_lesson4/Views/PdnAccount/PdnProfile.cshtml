@@ -1,0 +1,38 @@
+﻿@{
+	ViewData["Title"] = "Thông tin tài khoản";
+
+	var profile = ViewBag.PdnAccount as PdnAccount;
+}
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="border-1 p-2">
+			<img src="@profile.Avatar" alt="@profile.Name" class="w-100" />
+		</div>
+	</div>
+	<div class="col-md-8">
+		<div class="card p-2">
+			<h3>Fullname: @profile.Name</h3>
+			<p>Email: @profile.Email</p>
+			<p>Address: @profile.Address</p>
+			<p>Phone: @profile.Phone</p>
+			<p>Bio: @profile.Bio</p>
+			<p>Gender: 
+					@if (profile.Gender == 1)
+					{
+						<text>Nam</text>
+					}
+					else
+					{
+						<text>Nữ</text>
+					}
+			</p>
+			<p>Birthday: @profile.Birthday</p>
+			<p>
+				<a asp-asp-controller="PdnAccount" asp-action="PdnIndex" class="btn btn-danger">
+					Back to list 
+				</a>
+			</p>
+		</div>
+	</div> 
+</div>
