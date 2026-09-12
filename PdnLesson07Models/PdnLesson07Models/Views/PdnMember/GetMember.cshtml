@@ -1,0 +1,13 @@
+﻿@{
+	ViewData["Title"] = "Thông tin sinh viên";
+	var member = Model as PdnLesson07Models.Models.DataModels.PdnMember;
+}
+ 
+<div class="alert alert-info">
+	<h1>@ViewData["Title"]</h1>
+	<p>Member Id: @member.PdnMemberId</p>
+	<p>Username: @member.PdnUserName</p>
+	<p>Password: @member.PdnPassword</p>
+	<p>Full Name: @member.PdnFullName</p>
+	<p>Email: @member.PdnEmail</p>	
+ </div>

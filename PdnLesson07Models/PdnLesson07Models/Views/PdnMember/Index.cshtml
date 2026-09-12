@@ -1,0 +1,60 @@
+@model IEnumerable<PdnLesson07Models.Models.DataModels.PdnMember>
+
+@{
+    ViewData["Title"] = "Danh Sách Sinh Viên";
+}
+<div class="card p-3">
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary" my-1 >Create New</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+				@Html.DisplayNameFor(model => model.PdnMemberId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnUserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnEmail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.PdnMemberId)
+			</td>
+            <td>
+                @Html.DisplayFor(model => item.PdnUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnEmail)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PdnMemberId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PdnMemberId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PdnMemberId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,31 @@
+﻿@{
+	ViewData["Title"] = "Danh Sách sinh viên";
+	int num = 0;
+}
+<div class="card" >
+	<h1>@ViewData["Title"]</h1>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>#No.</th>
+				<th>Mã Sinh Viên</th>
+				<th>Tên Đăng Nhập</th>
+				<th>Họ Tên</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var member in ViewBag.Members)
+			{
+				num++;
+				<tr>
+					<td>@num</td>
+					<td>@member.PdnMemberId</td>
+					<td>@member.PdnUserName</td>
+					<td>@member.PdnFullName</td>
+					<td>@member.PdnEmail</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
