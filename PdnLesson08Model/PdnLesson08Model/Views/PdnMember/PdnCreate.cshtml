@@ -1,0 +1,51 @@
+
+@model PdnLesson08Model.Models.PdnMember
+
+@{
+    ViewData["Title"] = "Thêm mới thành viên";
+}
+<form asp-action="PdnCreate" method="post">
+    <div class="card p-3">
+        <div class="card-header">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="card-body">  
+            <div class="row">
+                <div class="col-md-4">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="PdnUserName" class="control-label"></label>
+                        <input asp-for="PdnUserName" class="form-control" />
+                        <span asp-validation-for="PdnUserName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PdnPassword" class="control-label"></label>
+                        <input asp-for="PdnPassword" class="form-control" />
+                        <span asp-validation-for="PdnPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PdnFullName" class="control-label"></label>
+                        <input asp-for="PdnFullName" class="form-control" />
+                        <span asp-validation-for="PdnFullName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PdnEmail" class="control-label"></label>
+                        <input asp-for="PdnEmail" class="form-control" />
+                        <span asp-validation-for="PdnEmail" class="text-danger"></span>
+                    </div>
+                    
+                </div>
+            </div> 
+         </div>
+        <div class="card-footer">
+                 <div class="form-group">
+                        <input type="submit" value="Ghi lại" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    </div> 
+            </div>
+    </div>
+ </form>

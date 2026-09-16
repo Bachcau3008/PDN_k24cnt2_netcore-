@@ -1,0 +1,55 @@
+@model IEnumerable<PdnLesson08Model.Models.PdnMember>
+
+@{
+    ViewData["Title"] = "Danh sách thành viên";
+}
+<div class="card p-3">
+    <div class="card-header">
+        <h1>@ViewData["Title"]</h1>
+        <a asp-action="PdnCreate">Thêm mới</a>
+    </div>
+<div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PdnUserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PdnPassword)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PdnFullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PdnEmail)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.PdnUserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.PdnPassword)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.PdnFullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.PdnEmail)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "PdnEdit", new { id = item.PdnMemberId }) |
+                        @Html.ActionLink("Chi tiết", "PdnDetails", new { id = item.PdnMemberId }) |
+                        @Html.ActionLink("Xóa", "PdnDelete", new { id = item.PdnMemberId })
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+</div>
