@@ -1,0 +1,65 @@
+@model IEnumerable<PdnLesson09.Models.DataModels.PdnMember>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnUserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnPhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnBirthday)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.PdnUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnPhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnBirthday)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PdnMemberId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PdnMemberId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PdnMemberId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

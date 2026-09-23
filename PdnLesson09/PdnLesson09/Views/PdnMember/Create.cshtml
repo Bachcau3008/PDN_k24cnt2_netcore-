@@ -1,0 +1,61 @@
+﻿@model PdnLesson09.Models.DataViewModels.PdnMemberRegister
+
+@{
+    ViewData["Title"] = "Đăng ký thành viên";
+}
+
+<h1 class="my-3">@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PdnUserName" class="control-label fw-bold"></label>
+                <input asp-for="PdnUserName" class="form-control" placeholder="Nhập tên đăng nhập" />
+                <span asp-validation-for="PdnUserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PdnPassword" class="control-label fw-bold"></label>
+                <input asp-for="PdnPassword" class="form-control" placeholder="Nhập mật khẩu" />
+                <span asp-validation-for="PdnPassword" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PdnEmail" class="control-label fw-bold"></label>
+                <input asp-for="PdnEmail" class="form-control" placeholder="example@gmail.com" />
+                <span asp-validation-for="PdnEmail" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PdnPhoneNumber" class="control-label fw-bold"></label>
+                <input asp-for="PdnPhoneNumber" class="form-control" placeholder="Số điện thoại" />
+                <span asp-validation-for="PdnPhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PdnFullName" class="control-label fw-bold"></label>
+                <input asp-for="PdnFullName" class="form-control" placeholder="Họ và tên" />
+                <span asp-validation-for="PdnFullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PdnBirthday" class="control-label fw-bold"></label>
+                <input asp-for="PdnBirthday" type="date" class="form-control" />
+                <span asp-validation-for="PdnBirthday" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary me-2">Tạo mới</button>
+                <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
