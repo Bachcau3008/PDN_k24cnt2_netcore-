@@ -1,0 +1,105 @@
+@model IEnumerable<PhamDinhNguye_exam.Models.PdnEmployee>
+
+@{
+    ViewData["Title"] = "Danh sách Sinh viên";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <!-- Card Header chuẩn đồng bộ với trang Thêm mới -->
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-3">
+            <h4 class="mb-0 fw-bold">@ViewData["Title"]</h4>
+            <a asp-action="Create" class="btn btn-light text-primary fw-bold shadow-sm">
+                + Thêm mới Sinh viên
+            </a>
+        </div>
+
+        <div class="card-body p-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light border-bottom">
+                        <tr class="text-secondary fs-6">
+                            <th class="py-3">
+                                @Html.DisplayNameFor(model => model.PdnName)
+                            </th>
+                            <th class="py-3">
+                                @Html.DisplayNameFor(model => model.PdnGender)
+                            </th>
+                            <th class="py-3">
+                                @Html.DisplayNameFor(model => model.PdnBirthDay)
+                            </th>
+                            <th class="py-3">
+                                @Html.DisplayNameFor(model => model.PdnEmail)
+                            </th>
+                            <th class="py-3">
+                                @Html.DisplayNameFor(model => model.PdnPhone)
+                            </th>
+                            <th class="py-3 text-center">
+                                Trạng thái
+                            </th>
+                            <th class="py-3 text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="fw-bold text-dark">
+                                        @Html.DisplayFor(modelItem => item.PdnName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PdnGender)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PdnBirthDay)
+                                    </td>
+                                    <td>
+                                        <a href="mailto:@item.PdnEmail" class="text-decoration-none">
+                                            @Html.DisplayFor(modelItem => item.PdnEmail)
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PdnPhone)
+                                    </td>
+                                    <td class="text-center">
+                                        @if (item.PdnActive)
+                                        {
+                                            <span class="badge rounded-pill bg-success px-3 py-2">Đang học</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge rounded-pill bg-secondary px-3 py-2">Đã nghỉ</span>
+                                        }
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning" title="Chỉnh sửa">
+                                                Sửa
+                                            </a>
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info" title="Xem chi tiết">
+                                                Xem
+                                            </a>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger" title="Xóa">
+                                                Xóa
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" class="text-center text-muted py-5">
+                                    Chưa có dữ liệu sinh viên nào trong hệ thống.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

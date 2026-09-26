@@ -1,0 +1,80 @@
+@model PhamDinhNguye_exam.Models.PdnEmployee
+
+@{
+    ViewData["Title"] = "Chi tiết sinh viên";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <!-- Card Header đồng bộ -->
+        <div class="card-header bg-primary text-white py-3">
+            <h4 class="mb-0 fw-bold">@ViewData["Title"]</h4>
+        </div>
+
+        <div class="card-body p-4">
+            <!-- Khung chứa thông tin -->
+            <dl class="row bg-light p-3 rounded border">
+                <dt class="col-sm-3 col-md-2 fw-bold text-secondary mb-2">
+                    @Html.DisplayNameFor(model => model.PdnName)
+                </dt>
+                <dd class="col-sm-9 col-md-10 fw-bold text-dark mb-2">
+                    @Html.DisplayFor(model => model.PdnName)
+                </dd>
+
+                <dt class="col-sm-3 col-md-2 fw-bold text-secondary mb-2">
+                    @Html.DisplayNameFor(model => model.PdnGender)
+                </dt>
+                <dd class="col-sm-9 col-md-10 mb-2">
+                    @Html.DisplayFor(model => model.PdnGender)
+                </dd>
+
+                <dt class="col-sm-3 col-md-2 fw-bold text-secondary mb-2">
+                    @Html.DisplayNameFor(model => model.PdnBirthDay)
+                </dt>
+                <dd class="col-sm-9 col-md-10 mb-2">
+                    @Html.DisplayFor(model => model.PdnBirthDay)
+                </dd>
+
+                <dt class="col-sm-3 col-md-2 fw-bold text-secondary mb-2">
+                    @Html.DisplayNameFor(model => model.PdnEmail)
+                </dt>
+                <dd class="col-sm-9 col-md-10 mb-2">
+                    <a href="mailto:@Model?.PdnEmail" class="text-decoration-none">
+                        @Html.DisplayFor(model => model.PdnEmail)
+                    </a>
+                </dd>
+
+                <dt class="col-sm-3 col-md-2 fw-bold text-secondary mb-2">
+                    @Html.DisplayNameFor(model => model.PdnPhone)
+                </dt>
+                <dd class="col-sm-9 col-md-10 mb-2">
+                    @Html.DisplayFor(model => model.PdnPhone)
+                </dd>
+
+                <dt class="col-sm-3 col-md-2 fw-bold text-secondary mb-2">
+                    Trạng thái
+                </dt>
+                <dd class="col-sm-9 col-md-10 mb-2">
+                    @if (Model?.PdnActive ?? false)
+                    {
+                        <span class="badge rounded-pill bg-success px-3 py-2">Đang học</span>
+                    }
+                    else
+                    {
+                        <span class="badge rounded-pill bg-secondary px-3 py-2">Đã nghỉ</span>
+                    }
+                </dd>
+            </dl>
+
+            <!-- Nút điều hướng -->
+            <div class="mt-4 pt-3 border-top">
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning text-white me-2 shadow-sm">
+                    Chỉnh sửa
+                </a>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    Quay lại danh sách
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

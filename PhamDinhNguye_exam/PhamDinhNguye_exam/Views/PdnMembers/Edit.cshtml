@@ -1,0 +1,86 @@
+@model PhamDinhNguye_exam.Models.PdnEmployee
+
+@{
+    ViewData["Title"] = "Chỉnh sửa thông tin Sinh viên";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white py-3">
+            <h4 class="mb-0 fw-bold">@ViewData["Title"]</h4>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <!-- Họ và tên -->
+                <div class="mb-3">
+                    <label asp-for="PdnName" class="form-label fw-bold">Họ và tên sinh viên</label>
+                    <input asp-for="PdnName" class="form-control" placeholder="Nhập họ và tên sinh viên..." />
+                    <span asp-validation-for="PdnName" class="text-danger"></span>
+                </div>
+
+                <!-- Giới tính (Radio Button) -->
+                <div class="mb-3">
+                    <label asp-for="PdnGender" class="form-label fw-bold d-block">Giới tính</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" asp-for="PdnGender" value="Nam" id="genderMale" />
+                        <label class="form-check-label" for="genderMale">Nam</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" asp-for="PdnGender" value="Nữ" id="genderFemale" />
+                        <label class="form-check-label" for="genderFemale">Nữ</label>
+                    </div>
+                    <span asp-validation-for="PdnGender" class="text-danger d-block"></span>
+                </div>
+
+                <!-- Ngày sinh -->
+                <div class="mb-3">
+                    <label asp-for="PdnBirthDay" class="form-label fw-bold">Ngày sinh</label>
+                    <input asp-for="PdnBirthDay" type="date" class="form-control" />
+                    <span asp-validation-for="PdnBirthDay" class="text-danger"></span>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label asp-for="PdnEmail" class="form-label fw-bold">Email</label>
+                    <input asp-for="PdnEmail" type="email" class="form-control" placeholder="sv@student.edu.vn" />
+                    <span asp-validation-for="PdnEmail" class="text-danger"></span>
+                </div>
+
+                <!-- Số điện thoại -->
+                <div class="mb-3">
+                    <label asp-for="PdnPhone" class="form-label fw-bold">Số điện thoại</label>
+                    <input asp-for="PdnPhone" type="tel" class="form-control" placeholder="09xxxxxxxx" />
+                    <span asp-validation-for="PdnPhone" class="text-danger"></span>
+                </div>
+
+                <!-- Trạng thái (Checkbox công tắc) -->
+                <div class="mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" asp-for="PdnActive" id="activeSwitch" />
+                        <label class="form-check-label fw-bold" for="activeSwitch">
+                            Đang theo học (PdnActive)
+                        </label>
+                    </div>
+                    <span asp-validation-for="PdnActive" class="text-danger"></span>
+                </div>
+
+                <!-- Nút thao tác -->
+                <div class="mt-4 pt-3 border-top">
+                    <button type="submit" class="btn btn-primary me-2 shadow-sm">
+                        Cập nhật
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        Quay lại danh sách
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

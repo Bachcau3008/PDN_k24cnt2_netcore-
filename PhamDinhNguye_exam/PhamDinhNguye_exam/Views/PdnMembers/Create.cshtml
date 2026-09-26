@@ -1,0 +1,72 @@
+@model PhamDinhNguye_exam.Models.PdnEmployee
+
+@{
+    ViewData["Title"] = "Thêm mới Sinh viên";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">@ViewData["Title"]</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- Họ tên sinh viên -->
+                <div class="mb-3">
+                    <label asp-for="PdnName" class="form-label fw-bold">Họ và tên sinh viên</label>
+                    <input asp-for="PdnName" class="form-control" placeholder="Nhập họ và tên sinh viên..." />
+                    <span asp-validation-for="PdnName" class="text-danger"></span>
+                </div>
+
+                <!-- Giới tính -->
+                <div class="mb-3">
+                    <label asp-for="PdnGender" class="form-label fw-bold d-block">Giới tính</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" asp-for="PdnGender" value="Nam" id="genderMale" checked />
+                        <label class="form-check-label" for="genderMale">Nam</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" asp-for="PdnGender" value="Nữ" id="genderFemale" />
+                        <label class="form-check-label" for="genderFemale">Nữ</label>
+                    </div>
+                    <span asp-validation-for="PdnGender" class="text-danger d-block"></span>
+                </div>
+
+                <!-- Ngày sinh -->
+                <div class="mb-3">
+                    <label asp-for="PdnBirthDay" class="form-label fw-bold">Ngày sinh</label>
+                    <input asp-for="PdnBirthDay" type="date" class="form-control" />
+                    <span asp-validation-for="PdnBirthDay" class="text-danger"></span>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label asp-for="PdnEmail" class="form-label fw-bold">Email</label>
+                    <input asp-for="PdnEmail" type="email" class="form-control" placeholder="sv@student.edu.vn" />
+                    <span asp-validation-for="PdnEmail" class="text-danger"></span>
+                </div>
+
+                <!-- Số điện thoại -->
+                <div class="mb-3">
+                    <label asp-for="PdnPhone" class="form-label fw-bold">Số điện thoại</label>
+                    <input asp-for="PdnPhone" type="tel" class="form-control" placeholder="09xxxxxxxx" />
+                    <span asp-validation-for="PdnPhone" class="text-danger"></span>
+                </div>
+
+                <!-- Nút bấm -->
+                <div class="mt-4 pt-2 border-top">
+                    <button type="submit" class="btn btn-primary me-2">
+                        Thêm sinh viên
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Quay lại danh sách</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
