@@ -1,0 +1,48 @@
+@model IEnumerable<PdnLesson12.Models.PdnCategory>
+
+@{
+    ViewData["Title"] = "Danh sách danh mục";
+}
+
+<h2>Danh sách danh mục</h2>
+
+<p>
+    <a class="btn btn-sm btn-success" asp-action="Create">Thêm mới danh mục</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PdnName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PdnStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.PdnId">Edit</a> |
+                    <a class="btn btn-sm btn-success" asp-action="Details" asp-route-id="@item.PdnId">Details</a> |
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.PdnId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,33 @@
+@model PdnLesson12.Models.PdnCategory
+
+@{
+    ViewData["Title"] = "Thêm mới danh mục";
+}
+
+<h2>Thêm mới danh mục</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="PdnName" class="control-label"></label>
+                <input asp-for="PdnName" class="form-control" />
+                <span asp-validation-for="PdnName" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="PdnStatus" class="control-label"></label>
+                <input asp-for="PdnStatus" class="form-control" />
+                <span asp-validation-for="PdnStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Create" class="btn btn-sm btn-success" />
+                <a class="btn btn-sm btn-danger" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

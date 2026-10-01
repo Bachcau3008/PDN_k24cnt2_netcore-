@@ -1,0 +1,83 @@
+@model IEnumerable<PdnLesson12.Models.PdnProduct>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnSalePrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnCategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PdnCategory)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.PdnName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnImage)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnSalePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnCategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PdnCategory)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PdnId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PdnId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PdnId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

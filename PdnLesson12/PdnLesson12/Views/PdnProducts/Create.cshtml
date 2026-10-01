@@ -1,0 +1,80 @@
+@model PdnLesson12.Models.PdnProduct
+
+@{
+    ViewData["Title"] = "Thêm mới sản phẩm";
+}
+
+<h1>Thêm mới sản phẩm</h1>
+
+<h4>PdnProduct</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <!-- Bắt buộc phải có enctype="multipart/form-data" để upload file -->
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="PdnName" class="control-label">Name</label>
+                    <input asp-for="PdnName" class="form-control" />
+                    <span asp-validation-for="PdnName" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="PdnCategoryId" class="control-label">CategoryId</label>
+                    <select asp-for="PdnCategoryId" class="form-select" asp-items="ViewBag.PdnCategoryId">
+                        <option value="">-- Chọn danh mục --</option>
+                    </select>
+                    <span asp-validation-for="PdnCategoryId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label asp-for="PdnImage" class="control-label">Image</label>
+                    <!-- Chuyển sang input file để chọn ảnh từ máy -->
+                    <input type="file" name="files" class="form-control" />
+                    <span asp-validation-for="PdnImage" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="PdnPrice" class="control-label">Price</label>
+                    <input asp-for="PdnPrice" class="form-control" type="number" step="any" />
+                    <span asp-validation-for="PdnPrice" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="PdnSalePrice" class="control-label">SalePrice</label>
+                    <input asp-for="PdnSalePrice" class="form-control" type="number" step="any" />
+                    <span asp-validation-for="PdnSalePrice" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label asp-for="PdnDescription" class="control-label">Descriptions</label>
+                    <textarea asp-for="PdnDescription" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="PdnDescription" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="PdnStatus" class="control-label">Status</label>
+                    <input asp-for="PdnStatus" class="form-control" type="number" />
+                    <span asp-validation-for="PdnStatus" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <input type="submit" value="Lưu lại" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-secondary">Về danh sách</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
