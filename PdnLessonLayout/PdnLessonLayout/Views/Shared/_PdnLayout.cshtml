@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <!-- 1. Nhúng Bootstrap CSS (để các class container, border, my-1 hoạt động) -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- 2. NHÚNG FILE CSS CỦA BẠN VÀO ĐÂY ( BẮT BUỘC CÓ ) -->
+    <link rel="stylesheet" href="~/css/PdnLayoutHome.css" asp-append-version="true" />
+</head>
+<body>
+    <header >    
+            <h1>@ViewBag.Title</h1>
+    </header>
+    <nav class="container border my-1 p-2">
+    <div>
+            <a href="/PdnProducts/Index" title="Danh sách sản phẩm">Danh sách sản phẩm</a>
+            <a asp-action="Search" asp-controller="PdnProducts">Tìm kiếm sản phẩm</a>
+            <a asp-action="Hots" asp-controller="PdnProducts">Sản phẩm bán chạy</a>
+            <a href="/PdnProducts/About">Giới thiệu</a>
+        </div>
+    </nav>
+    <section class ="container border my-1 p-2 main">
+        @RenderBody()
+    </section> 
+    <footer  class="container border my-1 p-2">
+        <p style="text-align: center;">&copy; 2026  <br/>
+                    Copyright by DinhNguyen
+                    <br/>
+                    <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+        </p>
+    </footer>
+</body>
+</html>
